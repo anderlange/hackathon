@@ -14,8 +14,8 @@ interface SimulacoesProps {
 }
 
 export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: SimulacoesProps) {
-  const [valorEmprestimo, setValorEmprestimo] = useState(10000);
-  const [parcelas, setParcelas] = useState(10);
+  const [valorEmprestimo, setValorEmprestimo] = useState(0);
+  const [parcelas, setParcelas] = useState(0);
   const [resultado, setResultado] = useState( //Dados de produto mockados incluindo dados que não podem ser retornados pelo json-server, normalmente esses dados teriam estado inicial null
     {
       "id": 1,
@@ -104,7 +104,7 @@ export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: Sim
         parcelas: parcelas,
       };
 
-      const resSimulacao = await fetch('http://localhost:3000/simulacoes', {
+      const resSimulacao = await fetch('http://192.168.1.24:3000/simulacoes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(simulacao)
@@ -112,7 +112,7 @@ export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: Sim
 
       if (!resSimulacao.ok) throw new Error('Erro ao cadastrar simulação');
       const resultado = await resSimulacao.json();
-      setResultado(resultado);
+      // setResultado(resultado);
     } catch (err) {
       console.error('❌ Erro:', err.message);
     }

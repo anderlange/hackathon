@@ -21,7 +21,8 @@ export function CadastroProdutos({visivel, setVisivel, buscaProdutos}: CadastroP
       const produtos = await fetch('http://192.168.1.24:3000/produtos');
       const produtosJson = await produtos.json();
       const ultimoId = produtosJson.reduce((max, p) => p.id > max ? p.id : max, 0);
-      const proximoId = ultimoId + 1;
+      const ultimoIdNumero = Number(ultimoId);
+      const proximoId = ultimoIdNumero + 1;
       // fim
 
       const novoProduto = {

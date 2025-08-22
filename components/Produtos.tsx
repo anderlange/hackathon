@@ -62,7 +62,7 @@ export function Produtos() {
       </ScrollView>
       <CadastroProdutos visivel={mostraCadastroProdutos} setVisivel={setMostraCadastroProdutos} buscaProdutos={buscaProdutos}/>
       <BtnFlutuante setEstadoCadastro={setMostraCadastroProdutos} />
-      <Simulacoes produto={produtoParaSimular} visivel={mostraSimulacao} setVisivel={setMostraSimulacao} maximoParcelas={produtoParaSimularMaxParcelas} />
+      <Simulacoes idProduto={produtoParaSimular} visivel={mostraSimulacao} setVisivel={setMostraSimulacao} maximoParcelas={produtoParaSimularMaxParcelas} />
     </View>
   );
 }
