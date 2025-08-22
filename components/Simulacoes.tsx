@@ -165,6 +165,6 @@ const styles = StyleSheet.create({
   textoBotao: {
     color: "white",
     textTransform: "uppercase",
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
   }
 });

@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 32,
     color: Colors.azul,
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
   },
   subTitulo: {
     fontSize: 20,
     color: Colors.azul,
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
   },
 });

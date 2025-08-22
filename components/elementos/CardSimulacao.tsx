@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   nomeProduto: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
     color: '#3a4859',
   },
   btnSimulacao: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   btnSimulacaoTexto: {
     color: "white",
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
     textAlign: "center",
     textTransform: "uppercase",
   },

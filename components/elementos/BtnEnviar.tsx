@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   texto: {
     color: "white",
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
     textTransform: "uppercase",
   },
 });

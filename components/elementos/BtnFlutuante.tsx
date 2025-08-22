@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
     color: "white",
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
     backgroundColor: Colors.laranja,
     position: "absolute",
     bottom: 70,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   texto: {
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
     color: "white",
     textTransform: "uppercase",
   },

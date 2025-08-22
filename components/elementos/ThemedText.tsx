@@ -9,5 +9,6 @@ const styles = StyleSheet.create({
   textoPadrao: {
     color: Colors.texto,
     fontSize: 16,
+    fontFamily: 'CAIXAStdRegular',
   },
 });

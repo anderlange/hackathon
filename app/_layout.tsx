@@ -10,7 +10,8 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    CAIXAStdRegular: require('../assets/fonts/CAIXAStd-Regular.ttf'),
+    CAIXAStdBold: require('../assets/fonts/CAIXAStd-Bold.ttf'),
   });
 
   if (!loaded) {

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   titulo: {
-    fontWeight: "bold",
+    fontFamily: 'CAIXAStdBold',
   },
   linha: {
     justifyContent: "space-between",
@@ -41,13 +41,16 @@ const styles = StyleSheet.create({
   },
   colunaMes: {
     flex: 2,
+    fontFamily: 'CAIXAStdRegular',
   },
   coluna: {
     flex: 5,
     textAlign: "left",
+    fontFamily: 'CAIXAStdRegular',
   },
   colunaFinal: {
     flex: 5,
     textAlign: "right",
+    fontFamily: 'CAIXAStdRegular',
   },
 });
