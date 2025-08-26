@@ -5,8 +5,6 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 // NOTAS
 // O servidor foi simulado (mockado) em json-server, por isso, nos casos em que o backend deveria retornar dados transformados, os dados foram simulados
 // porém, todas as requisições são funcionais
-// Os testes em Jets foram abandonados por erros de compatibilidade que não tive tempo hábil de resolver
-// É importante salientar que, trabalhando na rede de varejo, todo o trabalho foi desenvolvido fora de expediente
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -20,18 +18,20 @@ export default function RootLayout() {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={styles.container} testID="produtos-container">
         <Produtos />
       </View>
       <ImageBackground
         source={require('@/assets/imagens/padrao.jpg')}
         style={styles.barraTopo}
         resizeMode="cover"
+         testID="barra-topo"
       />
       <ImageBackground
         source={require('@/assets/imagens/padrao.jpg')}
         style={styles.barraBase}
         resizeMode="cover"
+        testID="barra-base"
       />
     </>
   );

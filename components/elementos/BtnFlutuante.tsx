@@ -7,7 +7,7 @@ interface BtnFlutuanteProps {
 
 export function BtnFlutuante({setEstadoCadastro}: BtnFlutuanteProps) {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => setEstadoCadastro(true)}>
+    <TouchableOpacity style={styles.container} onPress={() => setEstadoCadastro(true)} testID="BtnFlutuante">
       <Text style={styles.texto}>Incluir produto</Text>
     </TouchableOpacity>
   );

@@ -1,14 +1,18 @@
-import { StyleSheet, View, Text } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import Modal from "react-native-modal";
 import { BtnEnviar } from "./elementos/BtnEnviar";
 import { CampoFormulario } from "./elementos/CampoFormulario";
-import Modal from "react-native-modal";
-import { useState } from "react";
 
 interface CadastroProdutosProps {
   visivel: boolean;
   setVisivel: any;
   buscaProdutos: any;
 }
+
+type Produto = { 
+  id: number;
+};
 
 export function CadastroProdutos({visivel, setVisivel, buscaProdutos}: CadastroProdutosProps) {
   const [nome, setNome] = useState(null)
@@ -20,7 +24,7 @@ export function CadastroProdutos({visivel, setVisivel, buscaProdutos}: CadastroP
       // Trecho necessário, pois o servidor mockado em json-server não cria id incremental automaticamente
       const produtos = await fetch('http://192.168.1.24:3000/produtos');
       const produtosJson = await produtos.json();
-      const ultimoId = produtosJson.reduce((max, p) => p.id > max ? p.id : max, 0);
+      const ultimoId = produtosJson.reduce((max: number, p: Produto) => p.id > max ? p.id : max, 0);
       const ultimoIdNumero = Number(ultimoId);
       const proximoId = ultimoIdNumero + 1;
       // fim
@@ -55,7 +59,7 @@ export function CadastroProdutos({visivel, setVisivel, buscaProdutos}: CadastroP
       onBackdropPress={() => setVisivel(false)}
       style={styles.fundo}
     >
-      <View style={styles.container}>
+      <View style={styles.container} testID="formularioCadastro">
         <CampoFormulario
           titulo="Nome do Produto"
           placeholder="Xxxxxxxx xxxx"
@@ -77,7 +81,7 @@ export function CadastroProdutos({visivel, setVisivel, buscaProdutos}: CadastroP
           tipoTeclado="number-pad"
           change={setPrazo}
         />
-        <BtnEnviar titulo="Incluir" funcao={cadastrarProduto} />
+        <BtnEnviar titulo="Incluir" onEnviar={cadastrarProduto} />
       </View>
     </Modal>
   );

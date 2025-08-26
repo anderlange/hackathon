@@ -4,9 +4,16 @@ interface MemoriaCalculoProps {
   dadosMemoria: any;
 }
 
+interface linhaMemoria {
+  mes: number;
+  juros: number;
+  amortizacao: number;
+  saldo: number;
+}
+
 export function MemoriaCalculo({dadosMemoria}: MemoriaCalculoProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="MemoriaCalculo">
         <Text style={styles.titulo}>Memória de cálculo:</Text>
         <View style={styles.linha}>
             <Text style={styles.colunaMes}>Mês</Text>
@@ -14,12 +21,27 @@ export function MemoriaCalculo({dadosMemoria}: MemoriaCalculoProps) {
             <Text style={styles.coluna}>Amortização</Text>
             <Text style={styles.colunaFinal}>Saldo</Text>
         </View>
-        {dadosMemoria.map((linha) => (
-          <View style={styles.linha} key={linha.mes}>
-              <Text style={styles.colunaMes}>1</Text>
-              <Text style={styles.coluna}>R$ 139,78</Text>
-              <Text style={styles.coluna}>R$ 791,72</Text>
-              <Text style={styles.colunaFinal}>R$ 9.208,28</Text>
+        {dadosMemoria.map((linha: linhaMemoria) => (
+          <View style={styles.linha} key={linha.mes} testID="LinhaMemoria">
+              <Text style={styles.colunaMes}>{linha.mes}</Text>
+              <Text style={styles.coluna}>
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(linha.juros)}
+              </Text>
+              <Text style={styles.coluna}>
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(linha.amortizacao)}
+              </Text>
+              <Text style={styles.colunaFinal}>
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(linha.saldo)}
+              </Text>
           </View>
         ))}
     </View>

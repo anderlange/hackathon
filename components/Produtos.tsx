@@ -1,11 +1,11 @@
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { CadastroProdutos } from "./CadastroProdutos";
 import { BtnFlutuante } from "./elementos/BtnFlutuante";
 import { CardProduto } from "./elementos/CardProduto";
 import { ThemedText } from "./elementos/ThemedText";
 import { Simulacoes } from "./Simulacoes";
-import { useState, useEffect } from "react";
 
 interface Produto {
   id: number;
@@ -37,6 +37,7 @@ export function Produtos() {
   return (
     <View style={styles.container}>
       <ScrollView>
+        <View style={styles.conteudo}>
         <View>
           <ThemedText style={styles.titulo}>Olá, Jonatan.</ThemedText>
           <ThemedText style={styles.subTitulo}>
@@ -59,6 +60,7 @@ export function Produtos() {
         ) : (
           <Text>Nenhum produto disponível</Text>
         )}
+        </View>
       </ScrollView>
       <CadastroProdutos visivel={mostraCadastroProdutos} setVisivel={setMostraCadastroProdutos} buscaProdutos={buscaProdutos}/>
       <BtnFlutuante setEstadoCadastro={setMostraCadastroProdutos} />
@@ -72,6 +74,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 70,
     height: "100%",
+  },
+  conteudo: {
     gap: 20,
   },
   titulo: {

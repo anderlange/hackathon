@@ -1,14 +1,14 @@
 import { Colors } from "@/constants/Colors";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 interface BtnEnviarProps {
   titulo: string;
-  funcao: any;
+  onEnviar: any;
 }
 
-export function BtnEnviar({ titulo, funcao }: BtnEnviarProps) {
+export function BtnEnviar({ titulo, onEnviar }: BtnEnviarProps) {
   return (
-    <TouchableOpacity onPress={funcao} style={styles.botao}>
+    <TouchableOpacity onPress={onEnviar} style={styles.botao} testID="BtnEnviar">
       <Text style={styles.texto}>{titulo}</Text>
     </TouchableOpacity>
   );

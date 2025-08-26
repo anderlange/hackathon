@@ -7,7 +7,7 @@ interface BtnVoltarProps {
 
 export function BtnVoltar({alteraEstado}: BtnVoltarProps) {
   return (
-    <TouchableOpacity onPress={() => alteraEstado(false)}>
+    <TouchableOpacity onPress={() => alteraEstado(false)} testID="BtnVoltar">
       <Text style={styles.botao}>{"<"} Voltar</Text>
     </TouchableOpacity>
   );

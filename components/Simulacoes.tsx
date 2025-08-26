@@ -1,10 +1,10 @@
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Modal from "react-native-modal";
 import { BtnVoltar } from "./elementos/BtnVoltar";
 import { CampoFormulario } from "./elementos/CampoFormulario";
 import { ResultadoSimulacao } from "./elementos/ResultadoSimulacao";
-import Modal from "react-native-modal";
 
 interface SimulacoesProps {
   idProduto: number;
@@ -25,67 +25,68 @@ export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: Sim
       "nomeProduto": "Produto X",
       "prazo": 12,
       "txEfetiva": 10.5,
+      "valorParcela": 931.50,
       "valorTotal": 11200,
       "memoriaCalculo": [
         {
           "mes": 1,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 9300.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 9300.00
         },
         {
           "mes": 2,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 8600.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 8600.00
         },
         {
           "mes": 3,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 7900.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 7900.00
         },
         {
           "mes": 4,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 7200.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 7200.00
         },
         {
           "mes": 5,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 6500.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 6500.00
         },
         {
           "mes": 6,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 5800.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 5800.00
         },
         {
           "mes": 7,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 5100.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 5100.00
         },
         {
           "mes": 8,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 4400.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 4400.00
         },
         {
           "mes": 9,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 3700.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 3700.00
         },
         {
           "mes": 10,
-          "juros": "R$ 100.00",
-          "amortizacao": "R$ 700.00",
-          "saldo": "R$ 3000.00"
+          "juros": 100.00,
+          "amortizacao": 700.00,
+          "saldo": 3000.00
         }
       ]
     }
@@ -112,15 +113,16 @@ export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: Sim
 
       if (!resSimulacao.ok) throw new Error('Erro ao cadastrar simulação');
       const resultado = await resSimulacao.json();
-      // setResultado(resultado);
+      // setResultado(resultado); <-- Os dados de resultado de simulação não sendo mockados, exigiria este comando
     } catch (err) {
-      console.error('❌ Erro:', err.message);
+      if (err instanceof Error) {
+        console.error('❌ Erro:', err.message);
+      } else {
+        console.error('❌ Erro desconhecido:', err);
+      }
+
     }
   };
-
-
-  
-
   return (
     <Modal
       isVisible={visivel}
@@ -128,7 +130,7 @@ export function Simulacoes({idProduto, visivel, setVisivel, maximoParcelas}: Sim
       animationOut="slideOutRight"
       backdropColor="white"
     >
-      <ScrollView style={styles.fundo}>
+      <ScrollView style={styles.fundo} testID="resultado">
         <BtnVoltar alteraEstado={fechaSimulacao}/>
         <View style={styles.formulario}>
           <CampoFormulario titulo="Valor do Empréstimo" placeholder="00.0" modo="decimal" tipoTeclado="decimal-pad" change={setValorEmprestimo}/>

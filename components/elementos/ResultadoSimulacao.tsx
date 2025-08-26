@@ -7,10 +7,9 @@ interface ResultadoSimulacaoProps {
   resultado: any;
 }
 
-export function ResultadoSimulacao({resultado}: ResultadoSimulacaoProps) {
-
-  if(resultado == null){
-    return <ThemedText>Nenhuma simulação para apresentar</ThemedText>
+export function ResultadoSimulacao({ resultado }: ResultadoSimulacaoProps) {
+  if (resultado == null) {
+    return <ThemedText>Nenhuma simulação para apresentar</ThemedText>;
   }
 
   return (
@@ -22,7 +21,12 @@ export function ResultadoSimulacao({resultado}: ResultadoSimulacaoProps) {
         </View>
         <View style={styles.linha}>
           <ThemedText>Valor solicitado</ThemedText>
-          <ThemedText>{resultado.valorEmprestimo}</ThemedText>
+          <ThemedText>
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(resultado.valorEmprestimo)}
+          </ThemedText>
         </View>
         <View style={styles.linha}>
           <ThemedText>Prazo</ThemedText>
@@ -34,11 +38,21 @@ export function ResultadoSimulacao({resultado}: ResultadoSimulacaoProps) {
         </View>
         <View style={styles.linha}>
           <ThemedText>Parcela mensal</ThemedText>
-          <ThemedText>R$ 931,50</ThemedText>
+          <ThemedText>
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(resultado.valorParcela)}
+          </ThemedText>
         </View>
         <View style={styles.linha}>
           <ThemedText>Valor total com juros</ThemedText>
-          <ThemedText>R$ {resultado.valorTotal}</ThemedText>
+          <ThemedText>
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(resultado.valorTotal)}
+          </ThemedText>
         </View>
       </View>
       <MemoriaCalculo dadosMemoria={resultado.memoriaCalculo} />
